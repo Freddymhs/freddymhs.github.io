@@ -7,7 +7,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://freddymhs-github-io.vercel.app",
   integrations: [mdx(), sitemap(), tailwind()],
   redirects: {
     // "/": { HOME_PAGE },
