@@ -1,0 +1,17 @@
+---
+import Link from "../atoms/Link.astro";
+import { HOME_PAGE, SOCIAL_PAGE, BLOG_PAGE } from "../../../consts";
+---
+
+<div class="nav-links">
+  <Link href={HOME_PAGE}>{HOME_PAGE}</Link>
+  <Link href={SOCIAL_PAGE}>{SOCIAL_PAGE}</Link>
+  <Link href={BLOG_PAGE}>{BLOG_PAGE}</Link>
+</div>
+
+<style>
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+  }
+</style>

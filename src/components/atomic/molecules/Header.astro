@@ -1,0 +1,32 @@
+---
+import Icon from "../molecules/Icon.astro";
+import Copyright from "../atoms/Copyright.astro";
+import Nav from "../molecules/Nav.astro";
+---
+
+<div class="headerPosition">
+  <div class="order">
+    <Nav />
+    <Icon name="@../../public/icon-github-alt.svg" height="42px" width="42px" />
+    <Copyright />
+  </div>
+</div>
+
+<style>
+  .headerPosition {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #252830;
+    z-index: 1;
+  }
+  .order {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 720px) {
+      flex-direction: column;
+    }
+  }
+</style>

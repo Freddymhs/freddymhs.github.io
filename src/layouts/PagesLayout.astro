@@ -1,0 +1,65 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+import BaseHead from "../components/atomic/atoms/BaseHead.astro";
+import Header from "../components/atomic/molecules/Header.astro";
+import Top from "../components/atomic/molecules/Top.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<html lang="en">
+  <head>
+    <ViewTransitions />
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <div class="html-background">
+      <header>
+        <Top />
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer>
+        <Header />
+      </footer>
+    </div>
+    <style>
+      .html-background {
+        background-size: 1%;
+        background-image: url("../../public/arica-morro.svg");
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        background-size: auto;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* responsive background */
+      /* @media (min-width: 720px) {
+        .html-background {
+          background-size: 66%;
+        }
+      }
+
+      @media (min-width: 1000px) {
+        .html-background {
+          background-size: 55%;
+        }
+      }
+      @media (min-width: 1360px) {
+        .html-background {
+          background-size: 44%;
+        }
+      }
+      @media (min-width: 1900px) {
+        .html-background {
+          background-size: 33%;
+        }
+      } */
+    </style>
+  </body>
+</html>
