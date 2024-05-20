@@ -1,0 +1,17 @@
+# Astro-specific files
+node_modules
+node_modules/
+dist/
+.cache/
+.vercel/
+.astrobuild/
+# IDE-specific files
+.idea/
+.vscode/
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+# Miscellaneous
+.DS_Store
+.env
