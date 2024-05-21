@@ -1,18 +1,70 @@
 ---
 import Icon from "../molecules/Icon.astro";
-import Copyright from "../atoms/Copyright.astro";
-import Nav from "../molecules/Nav.astro";
+import Link from "../atoms/Link.astro";
+import {
+  BLOG_PAGE,
+  HOME_PAGE,
+  PROJECTS_PAGE,
+  SOCIAL_PAGE,
+} from "../../../consts";
+const today = new Date();
 ---
 
 <div class="headerPosition">
   <div class="order">
-    <Nav />
-    <Icon name="@../../public/icon-github-alt.svg" height="42px" width="42px" />
-    <Copyright />
+    <div class="nav-links">
+      <Link href={HOME_PAGE}>{HOME_PAGE}</Link>
+      <Link href={SOCIAL_PAGE}>{SOCIAL_PAGE}</Link>
+      <Link href={BLOG_PAGE}>{BLOG_PAGE}</Link>
+      <Link href={PROJECTS_PAGE}>{PROJECTS_PAGE}</Link>
+    </div>
+    <!--  -->
+    <div class="icon">
+      <Icon
+        name="@../../public/icon-github-alt.svg"
+        height="42px"
+        width="42px"
+      />
+    </div>
+    <div
+      class="text"
+      style={{
+        color: "#eff3f4",
+      }}
+    >
+      &copy; {today.getFullYear()} fmarcos.dev
+    </div>
   </div>
 </div>
 
 <style>
+  .order {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (min-width: 720px) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  .nav-links {
+    display: flex;
+  }
+  .icon {
+    align-self: center;
+    @media (min-width: 1360px) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%); /* Centra el ícono horizontalmente */
+    }
+  }
+  .text {
+    align-self: center;
+    @media (min-width: 720px) {
+      margin-right: 31px;
+    }
+  }
+
   .headerPosition {
     position: fixed;
     bottom: 0;
@@ -20,13 +72,5 @@ import Nav from "../molecules/Nav.astro";
     right: 0;
     background-color: #252830;
     z-index: 1;
-  }
-  .order {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    @media (max-width: 720px) {
-      flex-direction: column;
-    }
   }
 </style>
