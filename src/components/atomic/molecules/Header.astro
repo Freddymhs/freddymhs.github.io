@@ -3,6 +3,7 @@ import Icon from "../molecules/Icon.astro";
 import Link from "../atoms/Link.astro";
 import {
   BLOG_PAGE,
+  CERTIFICATES_PAGE,
   HOME_PAGE,
   PROJECTS_PAGE,
   SOCIAL_PAGE,
@@ -14,9 +15,10 @@ const today = new Date();
   <div class="order">
     <div class="nav-links">
       <Link href={HOME_PAGE}>{HOME_PAGE}</Link>
-      <Link href={SOCIAL_PAGE}>{SOCIAL_PAGE}</Link>
-      <Link href={BLOG_PAGE}>{BLOG_PAGE}</Link>
       <Link href={PROJECTS_PAGE}>{PROJECTS_PAGE}</Link>
+      <Link href={SOCIAL_PAGE}>{SOCIAL_PAGE}</Link>
+      <Link href={CERTIFICATES_PAGE}>{CERTIFICATES_PAGE}</Link>
+      <Link href={BLOG_PAGE}>{BLOG_PAGE}</Link>
     </div>
     <!--  -->
     <div class="icon">
@@ -53,9 +55,8 @@ const today = new Date();
   .icon {
     align-self: center;
     @media (min-width: 1360px) {
-      position: absolute;
       left: 50%;
-      transform: translateX(-50%); /* Centra el ícono horizontalmente */
+      transform: translateX(-50%);
     }
   }
   .text {
@@ -67,6 +68,9 @@ const today = new Date();
 
   .headerPosition {
     position: fixed;
+    /* @media (max-width: 720px) {
+      position: relative;
+    } */
     bottom: 0;
     left: 0;
     right: 0;

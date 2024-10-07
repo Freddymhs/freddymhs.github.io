@@ -7,17 +7,24 @@ import Top from "../components/atomic/molecules/Top.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 const currentPath = Astro.url.pathname.includes("blog");
-console.log(currentPath);
 ---
 
 <html lang="en">
   <head>
     <ViewTransitions />
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      .html-background {
+        background-image: url("../../public/arica-morro.svg");
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        min-height: 100vh;
+      }
+    </style>
   </head>
 
   <body>
-    <div class={!currentPath ? "html-background" : ""}>
+    <div class="html-background">
       {
         !currentPath && (
           <header>
@@ -26,25 +33,14 @@ console.log(currentPath);
         )
       }
       <main>
+        <br />
+
         <slot />
       </main>
-      <footer>
-        <Header />
-      </footer>
+
+      <!-- <footer> -->
+      <Header />
+      <!-- </footer> -->
     </div>
-    <style>
-      .html-background {
-        background-size: 1%;
-        background-image: url("../../public/arica-morro.svg");
-        background-repeat: no-repeat;
-        background-position: bottom left;
-        background-size: auto;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-    </style>
   </body>
 </html>

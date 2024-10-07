@@ -1,0 +1,37 @@
+---
+import PagesLayout from "../layouts/PagesLayout.astro";
+
+// Importa todas las imágenes PNG de la carpeta certificates
+const images = import.meta.glob("../../public/certificates/*.png");
+---
+
+<PagesLayout title="Certificados">
+  <div class="gallery">
+    {
+      Object.entries(images).map(([path]) => (
+        <picture>
+          <img src={path} alt="Certificado" class="gallery_img" />
+        </picture>
+      ))
+    }
+  </div>
+
+  <style>
+    /*columnas*/
+    .gallery {
+      column-count: 3; /*columnas*/
+      column-width: 300px; /*ancho columnas*/
+      column-gap: 13px; /*separacion columnas*/
+      max-width: 1366px; /*ancho galeria*/
+      margin-left: auto;
+      margin-right: auto;
+      /*  */
+    }
+    /*imagenes*/
+    .gallery_img {
+      max-width: 100%; /*imagen no desborda sobre su columna*/
+      margin-bottom: 8px; /*espacio bottom*/
+      display: block; /**/
+    }
+  </style>
+</PagesLayout>

@@ -9,6 +9,7 @@ export const HOME_PAGE = "/about_me";
 export const SOCIAL_PAGE = "/social";
 export const BLOG_PAGE = "/blog";
 export const PROJECTS_PAGE = "/projects";
+export const CERTIFICATES_PAGE = "/certificates";
 export const uNFixeD = "Freddy Huaylla";
 export const PROFESSION = "ANALISTA PROGRAMADOR";
 export const WELCOME_MESSAGES = [
