@@ -136,6 +136,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"configurate-new-pg-version.md": {
+	id: "configurate-new-pg-version.md";
+  slug: "configurate-new-pg-version";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "create-shortcut-linux.md": {
 	id: "create-shortcut-linux.md";
   slug: "create-shortcut-linux";
@@ -153,6 +160,13 @@ declare module 'astro:content' {
 "markdown-style-guide.md": {
 	id: "markdown-style-guide.md";
   slug: "markdown-style-guide";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
+"subscriptions-graphql.md": {
+	id: "subscriptions-graphql.md";
+  slug: "subscriptions-graphql";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">

@@ -1,36 +1,38 @@
 ---
 import PagesLayout from "../layouts/PagesLayout.astro";
 
-// Importa todas las imágenes PNG de la carpeta certificates
-const images = import.meta.glob("../../public/certificates/*.png");
+const allImages = import.meta.glob("/public/certificates/*");
+
+// Convertir los nombres de las rutas a un arreglo
+const certificateKeys = Object.keys(allImages);
+const certificatePathsDynamic = certificateKeys.map((path) =>
+  path.replace("/public", "")
+);
 ---
 
 <PagesLayout title="Certificados">
   <div class="gallery">
     {
-      Object.entries(images).map(([path]) => (
-        <picture>
-          <img src={path} alt="Certificado" class="gallery_img" />
-        </picture>
+      certificatePathsDynamic.map((path) => (
+        <img src={path} alt={path} class="gallery_img" />
       ))
     }
   </div>
 
   <style>
-    /*columnas*/
+    /* Columnas */
     .gallery {
-      column-count: 3; /*columnas*/
-      column-width: 300px; /*ancho columnas*/
-      column-gap: 13px; /*separacion columnas*/
-      max-width: 1366px; /*ancho galeria*/
+      column-count: 3; /* Columnas */
+      column-width: 300px; /* Ancho columnas */
+      column-gap: 13px; /* Separación columnas */
+      max-width: 1366px; /* Ancho galería */
       margin-left: auto;
       margin-right: auto;
-      /*  */
     }
-    /*imagenes*/
+    /* Imágenes */
     .gallery_img {
-      max-width: 100%; /*imagen no desborda sobre su columna*/
-      margin-bottom: 8px; /*espacio bottom*/
+      max-width: 100%; /* Imagen no desborda sobre su columna */
+      margin-bottom: 8px; /* Espacio bottom */
       display: block; /**/
     }
   </style>
