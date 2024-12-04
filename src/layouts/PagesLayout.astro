@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-
 import BaseHead from "../components/atomic/atoms/BaseHead.astro";
 import Header from "../components/atomic/molecules/Header.astro";
 import Top from "../components/atomic/molecules/Top.astro";
@@ -13,18 +12,13 @@ const currentPath = Astro.url.pathname.includes("blog");
   <head>
     <ViewTransitions />
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      .html-background {
-        background-image: url("../../public/arica-morro.svg");
-        background-repeat: no-repeat;
-        background-position: bottom left;
-        min-height: 100vh;
-      }
-    </style>
   </head>
 
   <body>
-    <div class="html-background">
+    <!-- Contenedor para la imagen de fondo -->
+    <div class="html-background"></div>
+
+    <div class="content">
       {
         !currentPath && (
           <header>
@@ -32,15 +26,14 @@ const currentPath = Astro.url.pathname.includes("blog");
           </header>
         )
       }
-      <main>
-        <br />
-
+      <main class="main-content">
         <slot />
       </main>
 
-      <!-- <footer> -->
       <Header />
-      <!-- </footer> -->
     </div>
+    <br />
+    <br />
+    <br />
   </body>
 </html>
