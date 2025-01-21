@@ -15,10 +15,9 @@ const currentPath = Astro.url.pathname.includes("blog");
   </head>
 
   <body>
-    <!-- Contenedor para la imagen de fondo -->
     <div class="html-background"></div>
 
-    <div class="content">
+    <div>
       {
         !currentPath && (
           <header>
@@ -26,12 +25,13 @@ const currentPath = Astro.url.pathname.includes("blog");
           </header>
         )
       }
-      <main class="main-content">
+      <main class="mt-8">
         <slot />
       </main>
 
       <Header />
     </div>
+
     <br />
     <br />
     <br />
