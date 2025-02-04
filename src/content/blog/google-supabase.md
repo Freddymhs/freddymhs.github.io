@@ -57,12 +57,13 @@ flutter build web
 ## 4. Configuración Final
 
 ### URL Configuration en Supabase
-1. Ir a: https://supabase.com/dashboard/project/[TU-ID]/auth/url-configuration
+1. IDesarrollo (ejemplo: localhost)
+   - Prr a: https://supabase.com/dashboard/project/[TU-ID]/auth/url-configuration
 2. Configurar URLs para:
-   - Desarrollo (ejemplo: localhost)
-   - Producción (ejemplo: URL de Vercel)
+   - oducción (ejemplo: URL de Vercel)
 
 ## Notas Importantes:
 - Guarda todos los valores SHA-1 y credenciales en un lugar seguro
 - Asegúrate de configurar correctamente los URIs de redirección
 - Para producción, necesitarás generar nuevas credenciales SHA-1
+
