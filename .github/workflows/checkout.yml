@@ -9,6 +9,8 @@ jobs:
   checkout_test:
     runs-on: ubuntu-latest
     steps:
+      - name: "Usando checkout para revisar contenido de la rama"
+        run: echo "http://github.com/marketplace?type=actions"
       - name: checkout
         uses: actions/checkout@v2
       - name: ls

@@ -1,0 +1,20 @@
+name: Create Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create and push tag
+        run: |
+          TAG="v1.0.0-$(git rev-parse --short HEAD)"
+          git tag $TAG
+          git push origin $TAG
