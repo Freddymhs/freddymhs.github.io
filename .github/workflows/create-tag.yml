@@ -62,3 +62,4 @@ jobs:
 
           # Push del tag al repositorio
           git push origin ${{ env.NEW_TAG }}
+          # fin
