@@ -12,7 +12,7 @@ jobs:
     steps:
       # Paso 1: Hacer checkout del repositorio
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Paso 2: Configurar Git para usar el bot de GitHub Actions
       - name: Set up Git user
@@ -27,7 +27,7 @@ jobs:
           echo "Creating tag $TAG"
           git tag $TAG  # Crear el tag localmente
 
-      # Paso 4: Configurar autenticación usando el token para hacer push del tag
+      # Paso 4: Configurar autenticación para el push
       - name: Set up Git authentication
         run: |
           git remote set-url origin https://$GITHUB_ACTOR:${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }}@github.com/$GITHUB_REPOSITORY.git
