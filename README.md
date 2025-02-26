@@ -1,4 +1,6 @@
-# 🌍 Mi Sitio Web Personal
+[![pages-build-deployment](https://github.com/Freddymhs/freddymhs.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Freddymhs/freddymhs.github.io/actions/workflows/pages/pages-build-deployment)
+
+# 🌍 Web Personal
 
 Sitio web personal, donde muestro mi perfil profesional, experiencia y proyectos 🚀
 
