@@ -1,0 +1,15 @@
+name: checkout action and ls
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checkout_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: ls
+        run: ls
