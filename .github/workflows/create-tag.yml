@@ -31,3 +31,5 @@ jobs:
           TAG="v1.0.0-$(git rev-parse --short HEAD)"  # Crear el tag usando el hash del commit
           git tag $TAG  # Crear el tag localmente
           git push origin $TAG  # Hacer push del tag al repositorio remoto
+
+# hola
