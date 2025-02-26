@@ -9,6 +9,11 @@ jobs:
   hello_world:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo the message
+      - name: English Message
         run: |
           echo "new workflow hello world"
+      - name: Spanish Message
+        run: |
+          echo "nuevo workflow hola mundo"
+      - name: Fecha
+        run: date
