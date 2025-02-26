@@ -27,10 +27,10 @@ jobs:
           echo "Creating tag $TAG"
           git tag $TAG  # Crear el tag localmente
 
-      # Paso 4: Configurar autenticación con el token
-      - name: Set up authentication for push
+      # Paso 4: Usar GITHUB_TOKEN para autenticación
+      - name: Set up authentication with GITHUB_TOKEN
         run: |
-          git remote set-url origin https://${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       # Paso 5: Hacer push del tag al repositorio remoto
       - name: Push tag to remote
