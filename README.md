@@ -1,61 +1,49 @@
-# Learning [Astro](https://docs.astro.build/en/getting-started/)
+# 🌍 Mi Sitio Web Personal
 
-## 🚀 Project Structure
+Sitio web personal, donde muestro mi perfil profesional, experiencia y proyectos 🚀
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📌 Sobre mí
 
-```text
+👨‍💻 **Freddy Huaylla**  
+💼 **Analista Programador | Fullstack Developer**  
+📧 [fmarcosdev@gmail.com](mailto:fmarcosdev@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/freddymhs/)  
 
-/
+## 📂 Secciones del Sitio
 
-├── public/
+🔹 `/about_me` - Información sobre mí  
+🔹 `/social` - Redes sociales  
+🔹 `/certificates` - Certificaciones  
+🔹 `/blog` - Blog con artículos y proyectos o ideas
 
-│ └── favicon.svg
-│ └── more statics...
+## 🎨 Diseño y Tecnologías Usadas
 
-├── src/
-│ ├── components/
-│ │ └── component1.astro
-│ ├── layouts/
-│ │ └── Layout.astro
-│ └── pages/
-│ └── index.astro
-└── package.json
+🌟 **Framework**: [Astro](https://astro.build/)  
+🎨 **UI/UX**: TailwindCSS, Figma  
+💻 **Desarrollo**: TypeScript, Astro
 
-```
+### 🎨 Paleta de Colores
+- 🟡 Amarillo (Fondo): `#DFD829`
+- ⚫ Gris oscuro (Fondo): `#252830`
+- 🟢 Verde (Títulos): `#61A059`
+- 🟢 Verde oscuro (Texto): `#095957`
+- 🟠 Crema (Secciones): `#FFF5E1`
 
-## Colors
+## 🚀 Comandos de Desarrollo
 
-- yellow|background `#DFD829`
-- 252830|background `#252830`
-- green|title `#61A059`
-- green|text `#095957`
-- eff3f4|section|title|text `#FFF5E1`
+Todos los comandos se ejecutan desde la raíz del proyecto en la terminal:
 
-## 🧞 Commands
+| Comando                   | Acción                                 |
+| ------------------------- | -------------------------------------- |
+| `npm install`             | Instala dependencias                   |
+| `npm run dev`             | Inicia el servidor en `localhost:4321` |
+| `npm run build`           | Construye la versión de producción     |
+| `npm run preview`         | Previsualiza el build localmente       |
+| `npm run astro ...`       | Ejecuta comandos CLI de Astro          |
+| `npm run astro -- --help` | Muestra ayuda para comandos de Astro   |
 
-All commands are run from the root of the project, from a terminal:
+## 📌 Recursos Útiles para implementar 
+- [Documentación de Astro](https://docs.astro.build/en/getting-started/)
+- [API de LinkedIn](https://www.youtube.com/watch?v=YJoof1kX_kQ)
 
-| Command | Action |
-
-| :------------------------ | :----------------------------------------------- |
-
-| `npm install` | Installs dependencies |
-
-| `npm run dev` | Starts local dev server at `localhost:4321` |
-
-| `npm run build` | Build your production site to `./dist/` |
-
-| `npm run preview` | Preview your build locally, before deploying |
-
-| `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
-
-| `npm run astro -- --help` | Get help using the Astro CLI |
-
-## 👀
-
-- TS
-- Astro
-- Canva,Figma para crear la plantilla
-- Tailwind
-- https://www.youtube.com/watch?v=YJoof1kX_kQ (LINKDIN API)
+---
