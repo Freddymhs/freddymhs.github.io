@@ -1,4 +1,4 @@
-name: Test GitHub Actions with Token
+name: Create and Push Tag
 
 on:
   push:
@@ -6,13 +6,13 @@ on:
       - main # Este workflow se activará cuando haya un push a la rama principal
 
 jobs:
-  test_action:
+  create_tag:
     runs-on: ubuntu-latest
 
     steps:
       # Paso 1: Hacer checkout del repositorio
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       # Paso 2: Configurar Git para usar el bot de GitHub Actions
       - name: Set up Git user
@@ -20,17 +20,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Paso 3: Crear un nuevo tag basado en el commit hash
+      # Paso 3: Crear y hacer push del tag
       - name: Create a new tag based on the commit hash
         run: |
           TAG="v1.0.0-$(git rev-parse --short HEAD)"  # Crear el tag usando el hash del commit
           echo "Creating tag $TAG"
           git tag $TAG  # Crear el tag localmente
 
-      # Paso 4: Configurar autenticación para el push
-      - name: Set up Git authentication
+      # Paso 4: Configurar autenticación con el token
+      - name: Set up authentication for push
         run: |
-          git remote set-url origin https://$GITHUB_ACTOR:${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }}@github.com/$GITHUB_REPOSITORY.git
+          git remote set-url origin https://${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }}@github.com/${{ github.repository }}.git
 
       # Paso 5: Hacer push del tag al repositorio remoto
       - name: Push tag to remote
