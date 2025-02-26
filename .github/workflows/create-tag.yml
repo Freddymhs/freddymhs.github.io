@@ -17,4 +17,6 @@ jobs:
         run: |
           TAG="v1.0.0-$(git rev-parse --short HEAD)"
           git tag $TAG
-          git push origin $TAG
+          git push https://github.com/${{ github.repository }} $TAG
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
