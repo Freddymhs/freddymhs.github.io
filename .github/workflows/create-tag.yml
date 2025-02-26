@@ -3,29 +3,20 @@ name: Create and push tags
 on:
   push:
     branches:
-      - main # Este workflow se activará cuando haya un push a la rama principal
+      - main # Se activa al hacer push a la rama principal
 
 jobs:
   create_tag:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Hacer checkout del repositorio
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Paso 2: Configurar Git para usar el bot de GitHub Actions
-      - name: Set up Git user
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      # Paso 3: Crear y hacer push del tag
-      - name: Create a new tag based on the commit hash
+      - name: Create and push tag
         run: |
           TAG="v1.0.0-$(git rev-parse --short HEAD)"  # Crear el tag usando el hash del commit
-          echo "Creating tag $TAG"
-          git tag $TAG  # Crear el tag localmente
-          git push origin $TAG  # Hacer push del tag al repositorio remoto
+          git tag $TAG  # Crear el tag
+          git push origin $TAG  # Hacer push del tag
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACTION_TOKEN }} # Referenciar el token de los secretos de GitHub
+          GITHUB_TOKEN: ${{ secrets.GH_ACTION_TOKEN }} # Token para autenticación
