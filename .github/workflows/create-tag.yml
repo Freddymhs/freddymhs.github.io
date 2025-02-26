@@ -6,6 +6,9 @@ on:
       - main
       - master # Para repositorios que usen master como rama principal
 
+permissions:
+  contents: write # Asegura que el workflow tenga permisos para escribir en el repositorio
+
 jobs:
   auto-tag:
     runs-on: ubuntu-latest
@@ -14,6 +17,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Necesario para acceder al historial completo
+          token: ${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }} # Usar tu token personal con permisos adecuados
 
       - name: Configure Git
         run: |
@@ -50,11 +54,11 @@ jobs:
 
       - name: Create and Push Tag
         run: |
+          # Modificar la URL remota para usar el token explícitamente
+          git remote set-url origin https://${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }}@github.com/${{ github.repository }}.git
+
           # Crear un tag anotado con información del commit
           git tag -a ${{ env.NEW_TAG }} -m "Auto Tag: ${{ env.COMMIT_MSG }}"
 
           # Push del tag al repositorio
           git push origin ${{ env.NEW_TAG }}
-        env:
-          # Usar el token de GitHub para autenticación
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.PERMISSION_CREATED_FOR_GHACTIONS }}
