@@ -28,4 +28,4 @@ jobs:
           git tag $TAG  # Crear el tag localmente
           git push origin $TAG  # Hacer push del tag al repositorio remoto
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACTIONS_TOKEN }} # Referenciar el token de los secretos de GitHub
+          GITHUB_TOKEN: ${{ secrets.GH_ACTION_TOKEN }} # Referenciar el token de los secretos de GitHub
