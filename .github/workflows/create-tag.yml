@@ -1,40 +1,60 @@
-name: Create and Push Tag
+name: Auto Tag Generation
 
 on:
-  # Puedes ejecutarlo manualmente desde la interfaz de GitHub
-  workflow_dispatch:
-    inputs:
-      tag_version:
-        description: "Versión del tag (ejemplo: v1.0.0)"
-        required: true
-      tag_message:
-        description: "Mensaje para el tag"
-        required: true
-        default: "Nueva versión"
+  push:
+    branches:
+      - main
+      - master # Para repositorios que usen master como rama principal
 
 jobs:
-  create-tag:
+  auto-tag:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          # Necesitamos tener acceso completo al historial para crear tags
-          fetch-depth: 0
+          fetch-depth: 0 # Necesario para acceder al historial completo
 
       - name: Configure Git
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
+      - name: Get latest tag
+        id: get_latest_tag
+        run: |
+          # Obtener el último tag (si existe)
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $LATEST_TAG"
+          # Extraer los componentes de versión
+          VERSION=${LATEST_TAG#v}
+          MAJOR=$(echo $VERSION | cut -d. -f1)
+          MINOR=$(echo $VERSION | cut -d. -f2)
+          PATCH=$(echo $VERSION | cut -d. -f3)
+          # Incrementar el número de patch
+          PATCH=$((PATCH + 1))
+          # Crear la nueva versión
+          NEW_TAG="v$MAJOR.$MINOR.$PATCH"
+          echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+          echo "New tag will be: $NEW_TAG"
+
+      - name: Extract commit message
+        id: extract_message
+        run: |
+          # Obtener el mensaje del último commit
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          # Limpiar el mensaje para usarlo en el tag
+          CLEAN_MSG=$(echo "$COMMIT_MSG" | tr -d '\n' | head -c 50)
+          echo "COMMIT_MSG=$CLEAN_MSG" >> $GITHUB_ENV
+          echo "Commit message: $CLEAN_MSG"
+
       - name: Create and Push Tag
         run: |
-          # Crear un tag anotado con el mensaje proporcionado
-          git tag -a ${{ github.event.inputs.tag_version }} -m "${{ github.event.inputs.tag_message }}"
+          # Crear un tag anotado con información del commit
+          git tag -a ${{ env.NEW_TAG }} -m "Auto Tag: ${{ env.COMMIT_MSG }}"
 
           # Push del tag al repositorio
-          git push origin ${{ github.event.inputs.tag_version }}
+          git push origin ${{ env.NEW_TAG }}
         env:
           # Usar el token de GitHub para autenticación
-          # Intentará usar GITHUB_TOKEN primero, si no existe usará tu token personalizado
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.PERMISSION_CREATED_FOR_GHACTIONS }}
