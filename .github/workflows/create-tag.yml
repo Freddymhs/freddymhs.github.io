@@ -20,11 +20,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Paso 3: Crear y hacer push del tag
+      # Paso 3: Configuración de autenticación para hacer push
+      - name: Set up Git authentication
+        run: |
+          git remote set-url origin https://$GITHUB_ACTOR:${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }}@github.com/$GITHUB_REPOSITORY.git
+
+      # Paso 4: Crear y hacer push del tag
       - name: Create a new tag based on the commit hash
         run: |
           TAG="v1.0.0-$(git rev-parse --short HEAD)"  # Crear el tag usando el hash del commit
           git tag $TAG  # Crear el tag localmente
           git push origin $TAG  # Hacer push del tag al repositorio remoto
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERMISSION_CREATED_FOR_GHACTIONS }} # Referenciar el token de los secretos del repositorio
